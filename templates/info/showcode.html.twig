@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Info index{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-md-6 mx-auto">
+            <h1>Scannez le code pour avoir les informations détaillées</h1>
+            <img src="{{ info.qrInfo }}" alt="{{ info.qrInfo }}" width="250">
+        </div>
+    </div>
+
+{% endblock %}

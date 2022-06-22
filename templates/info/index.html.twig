@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Info index{% endblock %}
+
+{% block body %}
+    <h1>Info index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom_info</th>
+                <th>Code_info</th>
+                <th>Created_at</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for info in infos %}
+            <tr>
+                <td>{{ info.id }}</td>
+                <td>{{ info.nomInfo }}</td>
+                <td>{{ info.codeInfo }}</td>
+                <td>{{ info.createdAt ? info.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('app_info_showcode', {'id': info.id}) }}">QRCode</a>
+                    <a href="{{ path('app_info_edit', {'id': info.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_info_new') }}">Create new</a>
+{% endblock %}
