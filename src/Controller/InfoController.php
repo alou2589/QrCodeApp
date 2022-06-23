@@ -35,7 +35,7 @@ class InfoController extends AbstractController
             $info->setCodeInfo($codeinfo);
             $info->setQrInfo((string)$qr_code);
             $infoRepository->add($info, true);
-            $qr_code=$qrcode->qrcode($info->getId());
+            $qr_code=$qrcode->qrcode($info->getId(), $info->getCodeInfo());
             $info->setQrInfo((string)$qr_code);
             $infoRepository->add($info, true);
             return $this->redirectToRoute('app_info_index', [], Response::HTTP_SEE_OTHER);

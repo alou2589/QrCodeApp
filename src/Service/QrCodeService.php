@@ -16,7 +16,7 @@ class QrCodeService
         $this->builder=$builder;
     }
 
-    public function qrcode($recherche)
+    public function qrcode($recherche, $code)
     {
         $url='https://3b4e-41-214-50-12.eu.ngrok.io/info/';
         $path= dirname(__DIR__,2).'/public/assets/';
@@ -32,7 +32,7 @@ class QrCodeService
         ->logoResizeToWidth(100)
         ->build()
         ;
-        $namePng=uniqid('','').'.png';
+        $namePng=$code.'.png';
         $result->saveToFile($path.'/qrcodes/'.$namePng);
         return $result->getDataUri();
     }
